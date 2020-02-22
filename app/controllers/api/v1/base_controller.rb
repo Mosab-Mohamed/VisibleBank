@@ -3,7 +3,7 @@ module Api
     class BaseController < ActionController::Base
       respond_to :json
       layout 'base'
-      
+      skip_before_action :verify_authenticity_token
       rescue_from Exception, with: :error_occurred
       
       private

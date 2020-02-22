@@ -3,6 +3,7 @@ class Account < ApplicationRecord
   has_one :currency
 
   validates :account_type, :balance, :number, :status, presence: true
+  validates :number, uniqueness: true
 
   enum status: { 
     active: 'active',

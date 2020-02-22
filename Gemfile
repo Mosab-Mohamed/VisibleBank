@@ -56,3 +56,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # A set of responders modules to dry up Rails 4.2+ app (add this gem to respond to json).
 gem "responders"
+
+# A pagination library
+gem 'will_paginate', '~> 3.1.0'

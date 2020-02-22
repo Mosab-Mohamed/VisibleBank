@@ -1,8 +1,8 @@
 class Transaction < ApplicationRecord
   belongs_to :to_customer, class_name: 'Customer', optional: -> { atm? || charge? || withdrawal? }
-  belongs_to :from_customer, class_name: 'Customer', optional: true -> { deposit? }
-  belongs_to :to_account, class_name: 'Account', optional: true -> { atm? || charge? || withdrawal? }
-  belongs_to :from_account, class_name: 'Account', optional: true -> { deposit? }
+  belongs_to :from_customer, class_name: 'Customer', optional: -> { deposit? }
+  belongs_to :to_account, class_name: 'Account', optional: -> { atm? || charge? || withdrawal? }
+  belongs_to :from_account, class_name: 'Account', optional: -> { deposit? }
 
   validates :amount, :transaction_type, presence: true
 
