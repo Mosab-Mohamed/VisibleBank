@@ -80,6 +80,8 @@ None
   - **Code:** 422 Unprocessable Entity <br />
     **Content:** `{ "success": false, "errors": { "code": 422, "message": { "email": [ "has already been taken" ] } } }`
 
+---
+
 ### **Update Customer**
 
 Returns json data about the updated customer.
@@ -112,6 +114,9 @@ Returns json data about the updated customer.
 
   - **Code:** 422 Unprocessable Entity <br />
     **Content:** `{ "success": false, "errors": { "code": 422, "message": { "email": [ "has already been taken" ] } } }`
+
+---
+
 
 ### **Get Customer**
 
@@ -146,6 +151,9 @@ Returns json data about the the requested customer.
   - **Code:** 500 Internal Server Error <br />
     **Content:** `{ "success": false, "errors": { "code": 500, "message": "Couldn't find Customer with 'id'=5" } }`
 
+---
+
+
 ### **Get Customers**
 
 Returns json data about the the requested customers.
@@ -176,6 +184,9 @@ Returns json data about the the requested customers.
     `{ "success": true, "data": { "customer": [ { "id": 1, "name": "Mosab Muhammad", "address": "Address1", "email": "mosab@example.com", "phone": "87542146545", "status": "active" }, { "id": 2, "name": "Muhammad Mosab", "address": "Address111", "email": "mosab1@example.com", "phone": "87542146755", "status": "active" } ] } }`
 
 - **Error Response:**
+
+---
+
 
 ### **Get Customer Accounts**
 
@@ -249,6 +260,9 @@ None
   - **Code:** 422 Unprocessable Entity <br />
     **Content:** `{ "success": false, "errors": { "code": 422, "message": { "number": [ "has already been taken" ] } } }`
 
+---
+
+
 ### **Update Account**
 
 Returns json data about the updated account.
@@ -281,6 +295,9 @@ Returns json data about the updated account.
 
   - **Code:** 422 Unprocessable Entity <br />
     **Content:** `{ "success": false, "errors": { "code": 422, "message": { "number": [ "has already been taken" ] } } }`
+
+---
+
 
 ### **Get Account**
 
@@ -315,7 +332,10 @@ Returns json data about the the requested account.
   - **Code:** 500 Internal Server Error <br />
     **Content:** `{ "success": false, "errors": { "code": 500, "message": "Couldn't find Account with 'id'=5" } }`
 
-### **Get Accounts
+---
+
+
+### **Get Accounts**
 
 Returns json data about the the requested accounts
 
@@ -345,7 +365,9 @@ Returns json data about the the requested accounts
     `{ "success": true, "data": { "account": [ { "customer_id": Integer, "currency_id": Integer, "number": String, "balance": String, "status": String, account_type: String } ] } }`
 
 - **Error Response:**
---
+
+---
+
 ### **Get Account balance**
 
 Returns json data about the the requested account balance.
