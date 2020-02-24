@@ -1,24 +1,38 @@
-# README
+<h1 align="center">
+  VisibleBank
+</h1>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<p align="center">
+  <a href="#requirements">Requirements</a> •
+  <a href="#how-to-use">How To Use</a> 
+</p>
 
-Things you may want to cover:
+---
 
-* Ruby version
+## Requirements
 
-* System dependencies
+- `Rails 5.2.3`
+- `SQLite3`
 
-* Configuration
+---
 
-* Database creation
+## How To Use
 
-* Database initialization
+### Prerequisites
 
-* How to run the test suite
+```bash
+  bundle install                      # to install the used ruby gems
+  rails db:create                     # to create the developemtn database if not found
+  rails db:migrate                    # to apply any pending migration
+  rails db:seed                       # to create the seed data
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+### Run VisibleBank
 
-* Deployment instructions
+```bash
+  rails s                             # the application will be in localhost:3000
+```
 
-* ...
+this command will start
+
+1- `rails` server for back-end development
