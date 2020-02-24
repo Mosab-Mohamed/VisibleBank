@@ -435,3 +435,40 @@ Returns json data about the the requested account transactions.
 
   - **Code:** 500 Internal Server Error <br />
     **Content:** `{ "success": false, "errors": { "code": 500, "message": "Couldn't find Account with 'id'=5" } }`
+
+---
+
+
+### **Update Account**
+
+Trnsfers the specified amount from account to another.
+
+- **URL**
+
+  /accounts/:id/transfer
+
+- **Method:**
+
+  `PATCH`
+
+- **URL Params**
+
+  **Required:**
+
+  `id=[integer]`
+
+- **Data Params**
+
+`{ "transaction": { "to_account_id": Integer, "amount": Number } }`
+
+- **Success Response:**
+
+  - **Code:** 200 <br />
+    **Content:**
+    `{ "success": true, "data": {} }`
+
+- **Error Response:**
+
+  - **Code:** 500 Internal Server Error <br />
+    **Content:** `{ "success": false, "errors": { "code": 500, "message": "Validation failed: Balance is NOT sufficient" } }`
+
