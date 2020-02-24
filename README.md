@@ -209,3 +209,172 @@ Returns json data about the the requested customer accounts.
 
   - **Code:** 500 Internal Server Error <br />
     **Content:** `{ "success": false, "errors": { "code": 500, "message": "Couldn't find Customer with 'id'=5" } }`
+
+---
+
+## Account
+
+---
+
+### **Create Account**
+
+Returns json data about the created Account.
+
+- **URL**
+
+  /accounts
+
+- **Method:**
+
+  `POST`
+
+- **URL Params**
+
+  **Required:**
+
+None
+
+- **Data Params**
+
+`{ "account": { "customer_id": Integer, "currency_id": Integer, "number": String, "balance": String, "status": String, account_type: String } }`
+
+- **Success Response:**
+
+  - **Code:** 200 <br />
+    **Content:**
+    `{ "success": true, "data": { "account": { "customer_id": Integer, "currency_id": Integer, "number": String, "balance": String, "status": String, account_type: String } } }`
+
+- **Error Response:**
+
+  - **Code:** 422 Unprocessable Entity <br />
+    **Content:** `{ "success": false, "errors": { "code": 422, "message": { "number": [ "has already been taken" ] } } }`
+
+### **Update Account**
+
+Returns json data about the updated account.
+
+- **URL**
+
+  /accounts/:id
+
+- **Method:**
+
+  `PATCH`
+
+- **URL Params**
+
+  **Required:**
+
+  `id=[integer]`
+
+- **Data Params**
+
+`{ "account": { "customer_id": Integer, "currency_id": Integer, "number": String, "balance": String, "status": String, account_type: String } }`
+
+- **Success Response:**
+
+  - **Code:** 200 <br />
+    **Content:**
+    `{ "success": true, "data": { "account": { "customer_id": Integer, "currency_id": Integer, "number": String, "balance": String, "status": String, account_type: String } } }`
+
+- **Error Response:**
+
+  - **Code:** 422 Unprocessable Entity <br />
+    **Content:** `{ "success": false, "errors": { "code": 422, "message": { "number": [ "has already been taken" ] } } }`
+
+### **Get Account**
+
+Returns json data about the the requested account.
+
+- **URL**
+
+  /accounts/:id
+
+- **Method:**
+
+  `GET`
+
+- **URL Params**
+
+  **Required:**
+
+  `id=[integer]`
+
+- **Data Params**
+
+  None
+
+- **Success Response:**
+
+  - **Code:** 200 <br />
+    **Content:**
+    `{ "success": true, "data": { "account": { "customer_id": Integer, "currency_id": Integer, "number": String, "balance": String, "status": String, account_type: String } } }`
+
+- **Error Response:**
+
+  - **Code:** 500 Internal Server Error <br />
+    **Content:** `{ "success": false, "errors": { "code": 500, "message": "Couldn't find Account with 'id'=5" } }`
+
+### **Get Accounts
+
+Returns json data about the the requested accounts
+
+- **URL**
+
+  /accounts
+
+- **Method:**
+
+  `GET`
+
+- **URL Params**
+
+  **Optional:**
+
+  `page=[integer]`
+  `per_page=[integer]`
+
+- **Data Params**
+
+  None
+
+- **Success Response:**
+
+  - **Code:** 200 <br />
+    **Content:**
+    `{ "success": true, "data": { "account": [ { "customer_id": Integer, "currency_id": Integer, "number": String, "balance": String, "status": String, account_type: String } ] } }`
+
+- **Error Response:**
+
+### **Get Account balance**
+
+Returns json data about the the requested account balance.
+
+- **URL**
+
+  /accounts/:id/balance
+
+- **Method:**
+
+  `GET`
+
+- **URL Params**
+
+  **Required:**
+
+  `id=[integer]`
+
+- **Data Params**
+
+  None
+
+- **Success Response:**
+
+  - **Code:** 200 <br />
+    **Content:**
+    `{ "success": true, "data": { "account": { "balance": 100 } } }`
+
+- **Error Response:**
+
+  - **Code:** 500 Internal Server Error <br />
+    **Content:** `{ "success": false, "errors": { "code": 500, "message": "Couldn't find Account with 'id'=5" } }`
