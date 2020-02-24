@@ -46,9 +46,7 @@ ActiveRecord::Schema.define(version: 2020_02_22_180112) do
   end
 
   create_table "transactions", force: :cascade do |t|
-    t.integer "to_customer_id"
     t.integer "to_account_id"
-    t.integer "from_customer_id"
     t.integer "from_account_id"
     t.decimal "amount", precision: 30, scale: 10, null: false
     t.string "transaction_type", null: false
@@ -56,9 +54,7 @@ ActiveRecord::Schema.define(version: 2020_02_22_180112) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["from_account_id"], name: "index_transactions_on_from_account_id"
-    t.index ["from_customer_id"], name: "index_transactions_on_from_customer_id"
     t.index ["to_account_id"], name: "index_transactions_on_to_account_id"
-    t.index ["to_customer_id"], name: "index_transactions_on_to_customer_id"
   end
 
 end

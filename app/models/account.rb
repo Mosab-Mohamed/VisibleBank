@@ -1,9 +1,12 @@
 class Account < ApplicationRecord
   belongs_to :customer
   has_one :currency
+  has_many :sent_transactions, foreign_key: :to_customer_id, class_name: :Transaction, dependent: :destroy
+  has_many :received_transactions, foreign_key: :from_customer_id, class_name: :Transaction, dependent: :destroy
 
   validates :account_type, :balance, :number, :status, presence: true
   validates :number, uniqueness: true
+  validates :balance, numericality: { greater_than_or_equal_to: 0, message: "is NOT sufficient" }
 
   enum status: { 
     active: 'active',

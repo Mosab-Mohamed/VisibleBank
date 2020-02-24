@@ -1,8 +1,6 @@
 class Transaction < ApplicationRecord
-  belongs_to :to_customer, class_name: 'Customer', optional: -> { atm? || charge? || withdrawal? }
-  belongs_to :from_customer, class_name: 'Customer', optional: -> { deposit? }
-  belongs_to :to_account, class_name: 'Account', optional: -> { atm? || charge? || withdrawal? }
-  belongs_to :from_account, class_name: 'Account', optional: -> { deposit? }
+  belongs_to :to_account, class_name: :Account, optional: -> { atm? || charge? || withdrawal? }
+  belongs_to :from_account, class_name: :Account, optional: -> { deposit? }
 
   validates :amount, :transaction_type, presence: true
 
@@ -16,4 +14,22 @@ class Transaction < ApplicationRecord
     transfer: 'Transfer', # Move funds from one account to another.
     withdrawal: 'Withdrawal' # Deduct funds from an account by any method.
   }
+
+  # after_commit :process_transaction, on: :create
+  before_commit :process_transaction, on: :create, if: :transfer?
+
+  def process_transaction
+    Transaction.transaction do
+      to_account.with_lock do
+        to_account.balance -= amount
+        to_account.save!
+      end
+      from_account..with_lock do
+        from_account.balance += amount
+        from_account.save!
+      end
+      self
+    end
+  end
+
 end

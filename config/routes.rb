@@ -4,6 +4,8 @@ Rails.application.routes.draw do
       get '/', to: 'home#index'
 
       scope :accounts do
+        get '/:id/balance', to: 'accounts#balance'
+        patch '/:id/transfer', to: 'accounts#transfer'
         get '/:id', to: 'accounts#show'
         get '/', to: 'accounts#index'
         post '/', to: 'accounts#create'
