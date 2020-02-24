@@ -345,7 +345,7 @@ Returns json data about the the requested accounts
     `{ "success": true, "data": { "account": [ { "customer_id": Integer, "currency_id": Integer, "number": String, "balance": String, "status": String, account_type: String } ] } }`
 
 - **Error Response:**
-
+--
 ### **Get Account balance**
 
 Returns json data about the the requested account balance.
@@ -373,6 +373,41 @@ Returns json data about the the requested account balance.
   - **Code:** 200 <br />
     **Content:**
     `{ "success": true, "data": { "account": { "balance": 100 } } }`
+
+- **Error Response:**
+
+  - **Code:** 500 Internal Server Error <br />
+    **Content:** `{ "success": false, "errors": { "code": 500, "message": "Couldn't find Account with 'id'=5" } }`
+---
+
+
+### **Get Account transactions**
+
+Returns json data about the the requested account transactions.
+
+- **URL**
+
+  /accounts/:id/transactions
+
+- **Method:**
+
+  `GET`
+
+- **URL Params**
+
+  **Required:**
+
+  `id=[integer]`
+
+- **Data Params**
+
+  None
+
+- **Success Response:**
+
+  - **Code:** 200 <br />
+    **Content:**
+    `{"success":true,"data":{"transactions":[{"id":3,"to":{"id":1,"customer_id":1,"currency_id":1,"account_type":"basic","balance":"90.0","number":"10005584512879","status":"active","created_at":"2020-02-24T13:18:47.216Z","updated_at":"2020-02-24T13:18:47.311Z"},"from":{"id":2,"customer_id":2,"currency_id":1,"account_type":"basic","balance":"110.0","number":"10005584512878","status":"active","created_at":"2020-02-24T13:18:47.229Z","updated_at":"2020-02-24T13:18:47.317Z"},"amount":"25.0","description":null,"type":"transfer","created_at":"2020-02-24T13:18:47.306Z"},{"id":1,"to":{"id":2,"customer_id":2,"currency_id":1,"account_type":"basic","balance":"110.0","number":"10005584512878","status":"active","created_at":"2020-02-24T13:18:47.229Z","updated_at":"2020-02-24T13:18:47.317Z"},"from":{"id":1,"customer_id":1,"currency_id":1,"account_type":"basic","balance":"90.0","number":"10005584512879","status":"active","created_at":"2020-02-24T13:18:47.216Z","updated_at":"2020-02-24T13:18:47.311Z"},"amount":"5.0","description":null,"type":"transfer","created_at":"2020-02-24T13:18:47.254Z"},{"id":2,"to":{"id":2,"customer_id":2,"currency_id":1,"account_type":"basic","balance":"110.0","number":"10005584512878","status":"active","created_at":"2020-02-24T13:18:47.229Z","updated_at":"2020-02-24T13:18:47.317Z"},"from":{"id":1,"customer_id":1,"currency_id":1,"account_type":"basic","balance":"90.0","number":"10005584512879","status":"active","created_at":"2020-02-24T13:18:47.216Z","updated_at":"2020-02-24T13:18:47.311Z"},"amount":"10.0","description":null,"type":"transfer","created_at":"2020-02-24T13:18:47.277Z"}]}}`
 
 - **Error Response:**
 
