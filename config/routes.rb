@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       scope :accounts do
         get '/:id/balance', to: 'accounts#balance'
         patch '/:id/transfer', to: 'accounts#transfer'
+        get '/:id/transactions', to: 'accounts#transactions'
         get '/:id', to: 'accounts#show'
         get '/', to: 'accounts#index'
         post '/', to: 'accounts#create'

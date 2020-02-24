@@ -40,7 +40,12 @@ class Api::V1::AccountsController < Api::V1::BaseController
       @message = transaction.errors
       render_unprocessable
     end
-    
+  end
+
+  def transactions
+    @transactions = Transaction
+                      .where(to_account: params[:id]).or(Transaction.where(from_account: params[:id]))
+                      .paginate(page: params[:page], per_page: params[:per_page])
   end
 
   private
